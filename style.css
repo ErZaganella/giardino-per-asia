@@ -1,0 +1,505 @@
+
+.garden {
+    min-height: 100svh;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(8, 11, 27, 0.08),
+            rgba(8, 11, 27, 0.12)
+        ),
+        url("garden-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 75px 20px 25px;
+    animation: gardenAppear 2s ease both;
+}
+
+
+@keyframes gardenAppear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.garden-sky {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.garden-stars {
+    display: none;
+}
+
+.moon {
+    position: absolute;
+    top: 7%;
+    right: 7%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f5e9ff;
+    box-shadow: 0 0 25px #c6a9ff80, 0 0 80px #a78bfa50;
+
+    display: none;
+}
+
+.firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e6caff;
+    box-shadow: 0 0 12px 4px #b99aff80;
+    animation: fly 5s ease-in-out infinite alternate;
+}
+
+@keyframes fly {
+    from { transform: translate(0, 0); opacity: .2; }
+    to { transform: translate(25px, -35px); opacity: 1; }
+}
+
+.garden-heading {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 25px;
+}
+
+.garden-heading span {
+    color: #bba8e7;
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.garden-heading h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 7vw, 65px);
+    font-weight: 400;
+    margin: 15px 0 10px;
+    color: #f5eaff;
+}
+
+.garden-heading p {
+    font-size: 12px;
+    color: #bcb4ce;
+    font-weight: 300;
+}
+
+
+.flower-field {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    height: clamp(350px, 55vh, 520px);
+    flex: none;
+    min-height: 350px;
+    z-index: 2;
+    margin: 145px auto 0;
+    transform: translateY(80px);
+}
+
+.flower-image {
+    position: absolute;
+    left: var(--x);
+    bottom: var(--y);
+    width: var(--size);
+    height: auto;
+    object-fit: contain;
+    z-index: 3;
+}
+
+.flower {
+    position: absolute;
+    left: var(--x);
+    bottom: var(--y);
+    width: 90px;
+    height: var(--height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    animation:
+        growFlower 1.5s ease both,
+        sway 4s ease-in-out infinite alternate;
+    animation-delay: var(--delay), 1.5s;
+    transform-origin: bottom center;
+    margin-left: -45px;
+}
+
+.flower-head {
+    position: relative;
+    width: var(--flower-size, 65px);
+    height: var(--flower-size, 65px);
+    margin-bottom: -3px;
+    filter: drop-shadow(0 0 13px var(--glow));
+}
+
+.flower-stem {
+    width: 3px;
+    height: calc(var(--height, 170px) * 0.48);
+    background: linear-gradient(#7eb78d, #315d55);
+    border-radius: 5px;
+}
+
+
+.flower:nth-child(odd) .flower-head {
+    transform: rotate(-8deg);
+}
+
+@keyframes sway {
+    from { rotate: -3deg; }
+    to { rotate: 3deg; }
+}
+
+
+.flower {
+    position: relative;
+    width: 75px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    animation: growFlower 1.5s ease both;
+    transform-origin: bottom;
+    transition: transform .3s ease;
+}
+
+.flower:hover {
+    transform: translateY(-8px) scale(1.08);
+}
+
+@keyframes growFlower {
+    from { opacity: 0; transform: scaleY(0); }
+    to { opacity: 1; transform: scaleY(1); }
+}
+
+.flower-head {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    margin-bottom: -3px;
+    filter: drop-shadow(0 0 13px var(--glow));
+    animation: sway 3s ease-in-out infinite alternate;
+}
+
+.flower-petal {
+    position: absolute;
+    width: 25px;
+    height: 34px;
+    left: 20px;
+    top: 0;
+    border-radius: 50% 50% 40% 40%;
+    background: var(--petal);
+    transform-origin: 50% 33px;
+}
+
+.flower-center {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 24px;
+    top: 24px;
+    border-radius: 50%;
+    background: #f8dfb0;
+    box-shadow: 0 0 12px #ffe8a0;
+}
+
+.flower-stem {
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(#7eb78d, #315d55);
+    border-radius: 5px;
+}
+
+.flower-leaf {
+    position: absolute;
+    width: 19px;
+    height: 10px;
+    background: #5b9877;
+    border-radius: 100% 0 100% 0;
+    bottom: 42px;
+    left: 37px;
+}
+
+@keyframes sway {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+}
+
+.garden-footer {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #eee3ff;
+    text-align: center;
+    text-shadow:
+        0 0 8px rgba(207, 174, 255, 0.8),
+        0 0 18px rgba(174, 139, 255, 0.5);
+    padding: 10px 18px;
+    background: rgba(13, 17, 42, 0.35);
+    border-radius: 30px;
+    margin-bottom: 5px;
+}
+
+/* SCHERMATA INIZIALE */
+
+.intro {
+    min-height: 100svh;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(8, 11, 27, 0.18),
+            rgba(8, 11, 27, 0.42)
+        ),
+        url("intro-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    color: #f5eaff;
+    transform: translateX(8px);
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #d5c0ff;
+}
+
+.little-star {
+    font-size: 30px;
+    color: #f5dba7;
+    margin: 25px 0;
+    text-shadow: 0 0 20px #e9caff;
+}
+
+.intro-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 8vw, 68px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin: 15px 0;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+.intro-content h1 span {
+    color: #dfc5ff;
+}
+
+.intro-content p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #eee5ff;
+    margin: 25px 0 35px;
+    text-shadow: 0 2px 12px #080b1b;
+}
+
+.intro-content button {
+    padding: 15px 28px;
+    border: 1px solid rgba(226, 205, 255, 0.7);
+    border-radius: 30px;
+    background: rgba(25, 21, 54, 0.65);
+    color: #fff0ff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.intro-content button:hover {
+    background: rgba(110, 77, 155, 0.8);
+    box-shadow: 0 0 25px rgba(202, 165, 255, 0.5);
+    transform: translateY(-3px);
+}
+
+.bottom-note {
+    margin-top: 45px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #d5c5eb;
+    text-shadow: 0 2px 10px #080b1b;
+}
+
+.stars {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.test-flower {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    left: 50%;
+    bottom: 15%;
+    transform: translateX(-50%);
+    z-index: 5;
+
+    filter:
+        brightness(0.78)
+        drop-shadow(0 0 12px rgba(18, 12, 48, 0.9))
+        drop-shadow(0 0 22px rgba(10, 15, 40, 0.7));
+}
+
+.garden-legend {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.garden-legend p {
+    color: #e8d8ff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: 0 0 12px rgba(210, 170, 255, 0.4);
+}
+
+.garden-legend span {
+    display: block;
+    max-width: 480px;
+    margin: 0 auto;
+    color: rgba(240, 230, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.flower-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(5, 7, 20, 0.75);
+    backdrop-filter: blur(8px);
+}
+
+.flower-modal-content {
+    position: relative;
+    width: min(100%, 520px);
+    padding: 45px 35px;
+    border: 1px solid rgba(220, 190, 255, 0.35);
+    border-radius: 22px;
+    background: linear-gradient(145deg, #25213d, #15182e);
+    color: #f5eaff;
+    text-align: center;
+    box-shadow: 0 0 45px rgba(160, 110, 255, 0.2);
+    animation: modalAppear 0.35s ease both;
+}
+
+.flower-modal-content h2 {
+    color: #e5c9ff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.flower-modal-content p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: none;
+    background: none;
+    color: #e5c9ff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-decoration {
+    display: block;
+    color: #d9b5ff;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.flower-image {
+    cursor: pointer;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.flower-image.discovered {
+    filter: drop-shadow(0 0 12px rgba(225, 190, 255, 0.9));
+}
+
+.flower-counter {
+    color: #e8d8ff;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(210, 170, 255, 0.4);
+}
+
+.flower-counter span {
+    color: inherit;
+    font-size: inherit;
+    font-weight: 600;
+}
+
+.final-button {
+    display: block;
+    margin: 28px auto 0;
+    padding: 12px 24px;
+    border: 1px solid rgba(220, 190, 255, 0.5);
+    border-radius: 30px;
+    background: rgba(190, 145, 255, 0.15);
+    color: #f0dfff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.final-button:hover {
+    background: rgba(190, 145, 255, 0.3);
+    box-shadow: 0 0 18px rgba(190, 145, 255, 0.3);
+    transform: translateY(-2px);
+}

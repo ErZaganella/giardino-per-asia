@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b1b">
+    <title>Un giardino per te 🌷</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main id="intro" class="intro">
+        <div class="stars" id="stars"></div>
+
+        <div class="intro-content">
+            <span class="eyebrow">18 NOVEMBRE · UN GIORNO SPECIALE</span>
+
+            <div class="little-star">✦</div>
+
+            <h1>Per te,<br><span>principessa.</span></h1>
+
+            <p>
+                Ho pensato di regalarti qualcosa<br>
+                che potesse fiorire anche da lontano.
+            </p>
+
+            <button id="enterGarden">
+                Entra nel tuo giardino <span>✧</span>
+            </button>
+
+            <div class="bottom-note">Un piccolo mondo, creato per te</div>
+        </div>
+    </main>
+
+    
+    <section id="garden" class="garden hidden">
+
+        <div class="garden-sky">
+            <div class="garden-stars" id="gardenStars"></div>
+            <div class="moon"></div>
+            <div class="fireflies" id="fireflies"></div>
+        </div>
+
+        <div class="garden-heading">
+            <span>UN PICCOLO MONDO PER TE</span>
+            <h2>Il tuo giardino segreto</h2>
+            <div class="garden-legend">
+                <span>
+                    Ognuno custodisce un pensiero, un ricordo
+                    o qualcosa che vorrei dirti.
+                    Insieme raccontano un piccolo pezzo di noi.
+                </span>
+                <p>Sette fiori, sette piccoli significati.</p>
+            </div>
+
+            <div class="flower-counter">
+                <span id="flowersFound">0</span> / 7 fiori scoperti ✦
+            </div>
+        </div>
+
+        <div class="flower-field" id="flowerField">
+            
+        </div>
+
+        <div class="garden-footer">
+            Fatto con amore, anche da lontano ✦
+        </div>
+
+    </section>
+
+    <div id="flowerModal" class="flower-modal hidden">
+        <div class="flower-modal-content">
+            <button id="closeFlowerModal" class="close-modal">×</button>
+            <span class="modal-decoration">✦</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <button id="openFinalModal" class="final-button hidden">
+                Scopri il messaggio finale ✦
+            </button>
+        </div>
+    </div>
+
+    <div id="finalModal" class="flower-modal hidden">
+        <div class="flower-modal-content final-modal-content">
+            <span class="modal-decoration">✦</span>
+            <h2>Il fiore più bello</h2>
+            <p>
+                Il 18 novembre si celebra la Giornata della Principessa,
+                conosciuta anche come National Princess Day.
+
+                <br><br>
+
+                È una ricorrenza nata per ricordare che ognuno merita
+                di sentirsi speciale, di essere apprezzato e di non
+                dimenticare mai il proprio valore.
+
+                <br><br>
+
+                E allora ho pensato che non potessi lasciar passare
+                questa giornata senza dedicarti qualcosa.
+
+                <br><br>
+
+                Tra tutti i posti possibili, sono felice che le nostre
+                strade si siano incontrate.
+
+                <br><br>
+
+                Questo piccolo giardino è tutto tuo. 🙃✨❤️
+            </p>
+            <button id="closeFinalModal" class="close-modal">×</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
